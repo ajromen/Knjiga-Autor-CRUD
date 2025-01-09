@@ -1,0 +1,20 @@
+﻿@model KnjigaAutorCRUD.Models.Knjiga
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h2>Dodaj novu knjigu</h2>
+
+<form asp-action="Dodaj" method="post">
+    <div class="mb-3">
+        <label class="form-label" for="Naslov">Naslov</label>
+        <input type="text" asp-for="Naslov" class="form-control" />
+        <div class="form-text">Neka dodatna informacija.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="Godina Izdanja">Godina Izdanja</label>
+        <input type="number" asp-for="GodinaIzdanja" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Dodaj</button>
+</form>
