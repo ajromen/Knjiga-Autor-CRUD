@@ -2,6 +2,7 @@
 using KnjigaAutorCRUD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KnjigaAutorCRUD.Migrations
 {
     [DbContext(typeof(AutorKnjigaDbContext))]
-    partial class AutorKnjigaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250109220542_ime migracije")]
+    partial class imemigracije
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

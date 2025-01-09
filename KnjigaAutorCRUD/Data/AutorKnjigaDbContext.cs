@@ -8,5 +8,6 @@ namespace KnjigaAutorCRUD.Data
         public AutorKnjigaDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Knjiga> Knjige { get; set; }
+        public DbSet<Autor> Autori { get; set; }
     }
 }

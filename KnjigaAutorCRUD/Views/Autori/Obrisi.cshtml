@@ -1,0 +1,22 @@
+﻿@model KnjigaAutorCRUD.Models.Autor
+@{
+}
+
+<h2>Obrisi knjigu</h2>
+
+<form asp-action="Obrisi" method="post">
+    <input asp-for="Id" type="hidden" />
+    <input asp-for="Ime" type="hidden" />
+    <input asp-for="Prezime" type="hidden" />
+    <div class="mb-3">
+        <label class="form-label" for="Ime">Ime</label>
+        <input type="text" asp-for="Ime" class="form-control" disabled />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="Prezime">Prezime</label>
+        <input type="text" asp-for="Prezime" class="form-control" disabled />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Obrisi</button>
+    <a class="btn btn-secondary" asp-action="Index">Odustani</a>
+</form>

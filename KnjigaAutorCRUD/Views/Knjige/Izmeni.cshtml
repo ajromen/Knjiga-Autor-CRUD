@@ -1,0 +1,18 @@
+﻿@model KnjigaAutorCRUD.Models.Knjiga
+@{
+    ViewData["Title"] = "Izmeni knjigu";
+}
+<h2>Izmeni knjigu</h2>
+
+<form asp-action="Izmeni" method="post">
+    <div class="mb-3">
+        <label class="form-label" for="Naslov">Naslov</label>
+        <input type="text" asp-for="Naslov" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="GodinaIzdanja">Godina Izdanja</label>
+        <input type="number" asp-for="GodinaIzdanja" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Izmeni</button>
+</form>
