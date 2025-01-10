@@ -1,0 +1,23 @@
+﻿@model KnjigaAutorCRUD.Models.AutorKnjiga
+@{
+    ViewData["Title"] = "Brisanje";
+}
+
+<h2>Obrisi vezu Autor-Knjiga</h2>
+
+<form asp-action="Obrisi" method="post">
+    <input type="hidden" asp-for="KnjigaId" />
+    <input type="hidden" asp-for="AutorId" />
+
+    <div class="mb-3">
+        <label class="form-label">Knjiga</label>
+        <input type="text" value="@Model.Knjiga?.Naslov" class="form-control" disabled />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Autor</label>
+        <input type="text" value="@($"{Model.Autor?.Ime} {Model.Autor?.Prezime}")" class="form-control" disabled />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Obrisi</button>
+    <a class="btn btn-secondary" asp-action="Index">Odustani</a>
+</form>
