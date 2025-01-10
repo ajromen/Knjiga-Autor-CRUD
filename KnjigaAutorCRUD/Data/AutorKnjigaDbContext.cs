@@ -18,5 +18,6 @@ namespace KnjigaAutorCRUD.Data
         public DbSet<Knjiga> Knjige { get; set; }
         public DbSet<Autor> Autori { get; set; }
         public DbSet<AutorKnjiga> AutoriKnjige { get; set; }
+        public DbSet<Izdavac> Izdavaci { get; set; }
     }
 }

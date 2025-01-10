@@ -18,7 +18,9 @@ namespace KnjigaAutorCRUD.Controllers
 
         public  async Task<IActionResult> Index()
         {
-            var knjiga= await _context.Knjige.OrderBy(k=>k.Id).ToListAsync();
+            var knjiga = await _context.Knjige.OrderBy(k => k.Id)
+                                                .Include(k=> k.Izdavac)
+                                                .ToListAsync();
             return View(knjiga);
         }
 
