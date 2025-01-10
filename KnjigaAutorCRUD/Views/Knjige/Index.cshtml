@@ -15,6 +15,7 @@
         <tr>
             <th>Sifra</th>
             <th>Naslov</th>
+            <th>Autori</th>
             <th>Godina Izdanja</th>
             <th>Izdavac</th>
             <th>Izmeni</th>
@@ -27,6 +28,16 @@
             <tr>
                 <td>@knjiga.Id.ToString()</td>
                 <td>@knjiga.Naslov</td>
+                <td>
+                    @foreach(var autor_knjiga in knjiga.AutoriKnjige)
+                    {
+                        @autor_knjiga.Autor?.Ime<text> </text>@autor_knjiga.Autor?.Prezime
+                        @if( autor_knjiga != knjiga.AutoriKnjige.Last())
+                        {
+                            <text>, </text>
+                        }
+                    }
+                </td>
                 <td>@knjiga.GodinaIzdanja.ToString()</td>
                 <td>@knjiga.Izdavac?.Ime</td>
 

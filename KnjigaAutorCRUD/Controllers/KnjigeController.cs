@@ -1,8 +1,10 @@
 ﻿using AspNetCoreGeneratedDocument;
 using KnjigaAutorCRUD.Data;
+using KnjigaAutorCRUD.Migrations;
 using KnjigaAutorCRUD.Models;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace KnjigaAutorCRUD.Controllers
@@ -19,18 +21,21 @@ namespace KnjigaAutorCRUD.Controllers
         public  async Task<IActionResult> Index()
         {
             var knjiga = await _context.Knjige.OrderBy(k => k.Id)
-                                                .Include(k=> k.Izdavac)
+                                                .Include(k => k.Izdavac)
+                                                .Include(k => k.AutoriKnjige)
+                                                .ThenInclude(k=> k.Autor)
                                                 .ToListAsync();
             return View(knjiga);
         }
 
         public IActionResult Dodaj()
         {
+            ViewData["Izdavaci"] = new SelectList(_context.Izdavaci, "Id", "Ime");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Dodaj([Bind("Id,Naslov,GodinaIzdanja")] Knjiga knjiga)
+        public async Task<IActionResult> Dodaj([Bind("Id,Naslov,GodinaIzdanja,IzdavacId")] Knjiga knjiga)
         {
             
             if (ModelState.IsValid)
@@ -44,12 +49,20 @@ namespace KnjigaAutorCRUD.Controllers
         
         public async Task<IActionResult> Izmeni(int id)
         {
-            var knjiga= await _context.Knjige.FirstOrDefaultAsync(k => k.Id==id);
+            var knjiga = await _context.Knjige.Include(k => k.Izdavac)
+                                               .FirstOrDefaultAsync(k => k.Id==id);
+
+            if (knjiga == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewData["Izdavaci"] = new SelectList(_context.Izdavaci, "Id", "Ime", knjiga.IzdavacId);
             return View(knjiga);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Izmeni([Bind("Id,Naslov,GodinaIzdanja")] Knjiga knjiga)
+        public async Task<IActionResult> Izmeni([Bind("Id,Naslov,GodinaIzdanja,IzdavacId")] Knjiga knjiga)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +75,14 @@ namespace KnjigaAutorCRUD.Controllers
 
         public async Task<IActionResult> Obrisi(int id)
         {
-            var knjiga = await _context.Knjige.FirstOrDefaultAsync(k => k.Id == id);
+            var knjiga = await _context.Knjige.Include(k => k.Izdavac)
+                                               .FirstOrDefaultAsync(k => k.Id == id);
+
+            if (knjiga == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(knjiga);
         }
 

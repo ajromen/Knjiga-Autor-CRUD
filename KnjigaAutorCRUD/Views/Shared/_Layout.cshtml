@@ -47,8 +47,14 @@
                                 <li><a class="dropdown-item text-light" asp-controller="AutoriKnjige" asp-action="Dodaj">Dodaj</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Izdavac
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item text-light" asp-controller="Izdavaci" asp-action="Index">Pregled</a></li>
+                                <li><a class="dropdown-item text-light" asp-controller="Izdavaci" asp-action="Dodaj">Dodaj</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

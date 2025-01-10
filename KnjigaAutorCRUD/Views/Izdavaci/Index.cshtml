@@ -1,10 +1,10 @@
-﻿@model List<KnjigaAutorCRUD.Models.Autor>
+﻿@model List<KnjigaAutorCRUD.Models.Izdavac>
 @{
     ViewData["Title"] = "Autori";
 }
 
 <div class="d-flex align-items-center justify-content-between mb-3">
-    <h2>Autori</h2>
+    <h2>Izdavaci</h2>
     <a class="btn btn-success" asp-action="Dodaj">Dodaj</a>
 </div>
 
@@ -14,24 +14,22 @@
         <tr>
             <th>Sifra</th>
             <th>Ime</th>
-            <th>Prezime</th>
             <th>Izmeni</th>
             <th>Obrisi</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var autor in Model)
+        @foreach (var izdavac in Model)
         {
             <tr>
-                <td>@autor.Id.ToString()</td>
-                <td>@autor.Ime</td>
-                <td>@autor.Prezime.ToString()</td>
+                <td>@izdavac.Id.ToString()</td>
+                <td>@izdavac.Ime</td>
 
                 <td>
-                    <a class="btn btn-outline-warning" asp-action="Izmeni" asp-route-id="@autor.Id">Izmeni</a>
+                    <a class="btn btn-outline-warning" asp-action="Izmeni" asp-route-id="@izdavac.Id">Izmeni</a>
                 </td>
                 <td>
-                    <a class="btn btn-outline-danger" asp-action="Obrisi" asp-route-id="@autor.Id">Obrisi</a>
+                    <a class="btn btn-outline-danger" asp-action="Obrisi" asp-route-id="@izdavac.Id">Obrisi</a>
                 </td>
             </tr>
         }
