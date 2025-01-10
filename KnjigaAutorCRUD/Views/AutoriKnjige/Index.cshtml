@@ -1,0 +1,43 @@
+﻿@model List<KnjigaAutorCRUD.Models.AutorKnjiga>
+
+@{
+    ViewData["Title"] = "Autori knjige";
+}
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <h2>Autori knjige</h2>
+    <a class="btn btn-success" asp-action="Dodaj">Dodaj</a>
+</div>
+
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>Knjiga</th>
+            <th>Autor</th>
+            <th>Izmeni</th>
+            <th>Obrisi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var autor_knjiga in Model)
+        {
+            <tr>
+                <td>@autor_knjiga.Knjiga.Naslov</td>
+                <td>@autor_knjiga.Autor.Ime @autor_knjiga.Autor.Prezime</td>
+                <td>
+                    <a class="btn btn-outline-warning"
+                       asp-action="Izmeni"
+                       asp-route-knjigaId="@autor_knjiga.KnjigaId"
+                       asp-route-autorId="@autor_knjiga.AutorId">Izmeni</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-danger"
+                       asp-action="Obrisi"
+                       asp-route-knjigaId="@autor_knjiga.KnjigaId"
+                       asp-route-autorId="@autor_knjiga.AutorId">Obrisi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

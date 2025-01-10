@@ -1,0 +1,25 @@
+﻿@model KnjigaAutorCRUD.Models.AutorKnjiga
+
+@{
+    ViewData["Title"] = "Izmeni vezu";
+}
+
+<h2>Izmeni ko je napisao knjnigu</h2>
+
+<form asp-action="Izmeni" method="post">
+    <input type="hidden" asp-for="KnjigaId" />
+    <input type="hidden" asp-for="AutorId" />
+
+    <div class="mb-3">
+        <label class="form-label" for="KnjigaId">Knjiga</label>
+        <select asp-for="KnjigaId" asp-items="ViewBag.Knjige" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="AutorId">Autor</label>
+        <select asp-for="AutorId" asp-items="ViewBag.Autori" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sacuvaj</button>
+    <a asp-action="Index" class="btn btn-secondary">Nazad</a>
+</form>
